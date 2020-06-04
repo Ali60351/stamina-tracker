@@ -1,11 +1,7 @@
 export const sendNotification = async (title, message) => {
     if ('Notification' in window) {
         if (Notification.permission !== 'granted') {
-            const status = await Notification.requestPermission();
-
-            if (status !== 'granted') {
-                return;
-            }
+            return;
         }
 
         navigator.serviceWorker.ready.then(registration => {
